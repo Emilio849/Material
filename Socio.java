@@ -4,50 +4,61 @@ import java.time.temporal.ChronoUnit;
 
 public class Socio {
 
+    private int id;
     private String dni;
     private String nombre;
     private LocalDate fechaAlta;
     
     private static DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
-    public Socio(String dni, String nombre) {
+    public Socio(int id, String dni, String nombre) {
+    	this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.fechaAlta = LocalDate.now();
     }
 
-    public Socio(String dni, String nombre, String alta) {
+    public Socio(int id, String dni, String nombre, String alta) {
+    	this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.fechaAlta = LocalDate.parse(alta, formatoFecha);
     }
 
-    public String getDni() {
-		return this.dni;
-	}
+public int getId() {
+	return id;
+}
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
+public void setId(int id) {
+	this.id = id;
+}
 
-	public String getNombre() {
-		return this.nombre;
-	}
+public String getDni() {
+	return this.dni;
+}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+public void setDni(String dni) {
+	this.dni = dni;
+}
 
-	public LocalDate getFechaAlta() {
-		return this.fechaAlta;
-	}
+public String getNombre() {
+	return this.nombre;
+}
 
-	public void setFechaAlta(LocalDate fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
+public void setNombre(String nombre) {
+	this.nombre = nombre;
+}
 
-	public int antiguedad() {
-        return (int) this.fechaAlta.until(LocalDate.now(), ChronoUnit.YEARS);
+public LocalDate getFechaAlta() {
+	return this.fechaAlta;
+}
+
+public void setFechaAlta(LocalDate fechaAlta) {
+	this.fechaAlta = fechaAlta;
+}
+
+public int antiguedad() {
+return (int) this.fechaAlta.until(LocalDate.now(), ChronoUnit.YEARS);
     }
 
     @Override
@@ -58,7 +69,7 @@ public class Socio {
 
 	@Override
 	public String toString() {
-		return "Socio [dni=" + this.dni + ", nombre=" + this.nombre + ", fechaAlta=" + this.fechaAlta.format(formatoFecha) + "]";
+		return "Socio [id=" + this.id + ",dni=" + this.dni + ", nombre=" + this.nombre + ", fechaAlta=" + this.fechaAlta.format(formatoFecha) + "]";
 	}
 
 }
